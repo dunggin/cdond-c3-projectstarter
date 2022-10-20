@@ -194,6 +194,7 @@ jobs:
             cd backend
             npm install
             npm run migrations > migrations_dump.txt
+            printenv
       - run:
           name: Send migration results to kvdb
           command: |
