@@ -165,7 +165,7 @@ jobs:
   configure-infrastructure:
     docker:
       - image: python:3.7-alpine3.11
-    steps:
+    steps:      
       - checkout
       - add_ssh_keys:
           fingerprints: ["b5:ac:81:84:c9:06:c0:5e:b6:01:42:42:4e:59:70:20"]
@@ -174,7 +174,10 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible 
+            pip install awscli
+            apk add --update ansible
+            apk add --update tar
+            apk add --update gzip
       - run:
           name: Configure server
           command: |
