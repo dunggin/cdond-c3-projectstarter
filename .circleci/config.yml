@@ -175,13 +175,14 @@ jobs:
           name: Install dependencies
           command: |
             apk add --update ansible
+            apk add openssh-client
       - run:
           name: Configure server
           command: |
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
-            ansible-playbook -vvvv -i inventory.txt configure-server.yml -u ubuntu
+            ansible-playbook -vvvv -i inventory.txt -c ssh configure-server.yml -u ubuntu
       - destroy-environment  
 
   run-migrations:
