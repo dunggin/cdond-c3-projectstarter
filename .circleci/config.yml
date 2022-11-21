@@ -200,7 +200,8 @@ jobs:
           root: ~/
           paths:
             - project/backend
-      - destroy_environment
+      - destroy-environment
+
   run-migrations:
     docker:
       - image: circleci/node:13.8.0
