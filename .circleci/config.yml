@@ -181,6 +181,7 @@ jobs:
           command: |
             cd .circleci/ansible
             cat inventory.txt
+            ansible all -m ping --ask-pass --ask-sudo-pass
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment  
 
