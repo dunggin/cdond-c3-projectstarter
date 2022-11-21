@@ -178,7 +178,6 @@ jobs:
             apk add openssh-client
       - run:
           name: Configure server
-          name: Configure server
           command: |
             cd .circleci/ansible
             cat inventory.txt
