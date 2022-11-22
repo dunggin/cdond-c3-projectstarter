@@ -30,7 +30,6 @@ commands:
                 npm install
                 npm run migration:revert
             fi
-
 jobs:
   build-frontend:
     docker:
@@ -353,7 +352,6 @@ jobs:
           command: |
             OldWorkflowID=$(cat ~/OldWorkflowID.txt)
             echo "OldWorkflowID: ${OldWorkflowID}"
-
             if [[ "${CIRCLE_WORKFLOW_ID:0:7}" != "${OldWorkflowID}" ]]
             then
               aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
@@ -362,7 +360,6 @@ jobs:
             else 
               echo '--------------------Cannot Cleanup--------------------'
             fi
-
 workflows:
   default:
     jobs:
