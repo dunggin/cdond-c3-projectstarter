@@ -30,6 +30,15 @@ commands:
                 npm install
                 npm run migration:revert
             fi
+  install_awscli:
+    description: Install awscli
+    steps:
+      - run:
+          name: Install awscli
+          command: |
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
 jobs:
   build-frontend:
     docker:
@@ -173,6 +182,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            pip install awscli
             apk add --update ansible 
       - run:
           name: Configure server
@@ -216,6 +226,7 @@ jobs:
             yum -y install curl
             curl -sL https://rpm.nodesource.com/setup_14.x | bash -
             yum install -y nodejs
+      - install_awscli
       - run:
           name: Get backend url
           command: |
@@ -250,6 +261,7 @@ jobs:
           command: |
             apk add --update ansible
             apk add --update nodejs npm
+      - install_awscli
       - run:
           name: Deploy backend
           command: |
