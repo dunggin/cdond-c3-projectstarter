@@ -1,23 +1,45 @@
----
+# ---
 
-- name: copy artifact file
-  copy:
-    src: artifact.tar.gz
-    dest: ~/artifact.tar.gz
-    backup: yes
+# - name: copy artifact file
+#   copy:
+#     src: artifact.tar.gz
+#     dest: ~/artifact.tar.gz
+#     backup: yes
 
-- name: extract artifact file
-  shell: | 
-    tar -zxvf artifact.tar.gz
+# - name: extract artifact file
+#   shell: | 
+#     tar -zxvf artifact.tar.gz
 
-- name: npm install 
-  shell: |
-    npm install
-
-# - name: Stop node
+# - name: npm install 
 #   shell: |
-#     pm2 stop default
+#     npm install
 
-- name: Restart node
+# # - name: Stop node
+# #   shell: |
+# #     pm2 stop default
+
+# - name: Restart node
+#   shell: |
+#     pm2 start npm -- start
+
+- name: "Copy backend Files to EC2 instance"
+  copy:
+    src: /root/project/artifact.tar.gz
+    dest: /home/ubuntu
+
+- name: "unarchive directory"
+  unarchive:
+    src: /home/ubuntu/artifact.tar.gz
+    dest: /home/ubuntu
+    copy: no
+
+- name: "Install Dependencies"
   shell: |
-    pm2 start npm -- start
+    cd /home/ubuntu/backend
+    npm install
+    npm run build
+- name: "Run the backend app"
+  shell: |
+    cd /home/ubuntu/backend
+    pm2 start npm --name backend -- start
+    pm2 ls
