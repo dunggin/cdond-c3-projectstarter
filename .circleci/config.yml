@@ -222,7 +222,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install dependencies 
           command: |
             # your code here Python, Ansible, Node, NPM
             yum install -y tar gzip
