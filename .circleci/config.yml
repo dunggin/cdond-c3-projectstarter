@@ -271,7 +271,6 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            sed 's/local/production/g' backend/.env
             cd backend
             npm i
             npm run build
