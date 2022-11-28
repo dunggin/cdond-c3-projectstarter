@@ -253,7 +253,7 @@ jobs:
 
   deploy-backend:
     docker:
-      - image: cimg/base:stable
+      - image: python:3.11-rc-alpine
     steps:
       - checkout
       - add_ssh_keys:
@@ -265,7 +265,7 @@ jobs:
           command: |
             apk add --update ansible
             apk add --update nodejs npm
-      - install_awscli
+            pip install awscli
       - run:
           name: Deploy backend
           command: |
