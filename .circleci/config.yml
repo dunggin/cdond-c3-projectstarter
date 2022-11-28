@@ -231,7 +231,6 @@ jobs:
             yum -y install curl
             curl -sL https://rpm.nodesource.com/setup_14.x | bash -
             yum install -y nodejs
-      - install_awscli
       - run:
           name: Get backend url
           command: |
@@ -254,7 +253,7 @@ jobs:
 
   deploy-backend:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: cimg/base:stable
     steps:
       - checkout
       - add_ssh_keys:
