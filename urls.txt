@@ -1,4 +1,3 @@
 Public Url to GitHub repository  [URL01]: https://github.com/dunggin/cdond-c3-projectstarter/tree/dev-dunggin
-Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02]: udapeople-db3f207.s3-website-us-east-1.amazonaws.com
-CloudFront URL: d9jfoblbkysmv.cloudfront.net
-Backend URL: http://52.91.50.253:3030/api/status
+Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02]: http://udapeople-5314b3e.s3-website-us-east-1.amazonaws.com
+CloudFront URL: d2reqgnevux8d0.cloudfront.net
